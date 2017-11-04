@@ -58,12 +58,12 @@ inference = ed.KLqp({W_0: qWs[0], b_0: qbs[0],
 inference.run(logdir='log')
 
 def sample():
-  sw0 = W_0.sample(1).eval().tolist()[0]
-  sw1 = W_1.sample(1).eval().tolist()[0]
-  sw2 = W_2.sample(1).eval().tolist()[0]
-  sb0 = b_0.sample(1).eval().tolist()[0] 
-  sb1 = b_1.sample(1).eval().tolist()[0] 
-  sb2 = b_2.sample(1).eval().tolist()[0] 
+  sw0 = qWs[0].sample(1).eval().tolist()[0]
+  sw1 = qWs[1].sample(1).eval().tolist()[0]
+  sw2 = qWs[2].sample(1).eval().tolist()[0]
+  sb0 = qbs[0].sample(1).eval().tolist()[0] 
+  sb1 = qbs[1].sample(1).eval().tolist()[0] 
+  sb2 = qbs[2].sample(1).eval().tolist()[0] 
   print(sw0) 
   X = tf.placeholder(tf.float32, [N, D], name="X")
   X = np.array(X_train, dtype=np.float32 )
